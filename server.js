@@ -18,17 +18,21 @@ const bootcamps = require("./routes/bootcamps");
 
 const app = express();
 
+// Body Parser
+
+app.use(express.json());
+
 app.use("/api/v1/bootcamps", bootcamps);
 
 const server = app.listen(PORT, console.log(`Server listening on ${PORT}`));
 
 // Handle unhandled promise Rejections
 process.on("unhandledRejection", (err, promise) => {
-  console.log(`Error: ${err.message}`);
+   console.log(`Error: ${err.message}`);
 
-  // Close Server
+   // Close Server
 
-  server.close(() => {
-    process.exit(1);
-  });
+   server.close(() => {
+      process.exit(1);
+   });
 });

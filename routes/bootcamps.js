@@ -5,14 +5,14 @@ const controller = require("../controllers/bootcamps");
 router.get("/", controller.getAllBootcamps);
 
 router
-  .route("/")
-  .get(controller.getAllBootcamps)
-  .post(controller.createBootcamp);
+   .route("/")
+   .get(controller.getAllBootcamps)
+   .post(controller.createBootcamp);
 
 router
-  .route("/:id")
-  .get(controller.getBootcamp)
-  .delete(controller.editBootcamp)
-  .put(controller.deleteBootcamp);
+   .route("/:id")
+   .get(controller.getBootcamp)
+   .delete(controller.editBootcamp)
+   .put(controller.deleteBootcamp);
 
 module.exports = router;
