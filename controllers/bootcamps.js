@@ -79,10 +79,38 @@ const editBootcamp = async (req, res, next) => {
 };
 
 const deleteBootcamp = (req, res, next) => {
-   res.status(200).json({
-      success: true,
-      msg: `Delete Bootcamp ${req.params.id}`,
-   });
+
+
+   if (!req.params.id) {
+      res.status(400).json({
+         success: false,
+         msg: "Please provide Bootcamp Id",
+      });
+   }
+
+   try {
+      const bootcamp = await Bootcamp.findByIdAndDelete(req.params.id);
+
+      if (!bootcamp) {
+         res.status(400).json({
+            success: false,
+            msg: `Invalid Bootcamp Id`,
+         });
+      }
+      res.status(200).json({
+         success: true,
+         data: 'Bootcamp deleted successfully',
+      });
+   } catch (err) {
+      res.status(400).json({
+         success: false,
+         msg: `Invalid Bootcamp Id`,
+      });
+   }
+
+
+
+  
 };
 
 module.exports = {
