@@ -12,7 +12,7 @@ router
 router
    .route("/:id")
    .get(controller.getBootcamp)
-   .delete(controller.editBootcamp)
-   .put(controller.deleteBootcamp);
+   .put(controller.editBootcamp)
+   .delete(controller.deleteBootcamp);
 
 module.exports = router;
