@@ -1,6 +1,6 @@
 const express = require("express");
 const dotenv = require("dotenv");
-
+const errorHandler = require("./middleware/error");
 const connectDB = require("./config/db");
 
 // Setup Port
@@ -23,6 +23,9 @@ const app = express();
 app.use(express.json());
 
 app.use("/api/v1/bootcamps", bootcamps);
+
+// error Handler Middleware
+app.use(errorHandler);
 
 const server = app.listen(PORT, console.log(`Server listening on ${PORT}`));
 
