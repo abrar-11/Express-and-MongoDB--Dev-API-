@@ -1,5 +1,5 @@
-
 const mongoose = require("mongoose");
+const slugify = require("slugify");
 const BootcampSchema = new mongoose.Schema({
    name: {
       type: String,
@@ -93,4 +93,12 @@ const BootcampSchema = new mongoose.Schema({
    },
 });
 
-module.exports =  mongoose.model("Bootcamp", BootcampSchema);
+// Bootcamp Slug from the Name
+
+BootcampSchema.pre("save", function(next) {
+   // console.log(this.slug,this.name)
+   this.slug = slugify(this.name, { lower: true });
+   next();
+});
+
+module.exports = mongoose.model("Bootcamp", BootcampSchema);
