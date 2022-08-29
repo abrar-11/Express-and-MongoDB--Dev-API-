@@ -2,7 +2,7 @@ const express = require("express");
 const dotenv = require("dotenv");
 const errorHandler = require("./middleware/error");
 const connectDB = require("./config/db");
-
+const colors = require("colors");
 // Setup Port
 const PORT = process.env.PORT || 5000;
 
@@ -21,6 +21,7 @@ const app = express();
 // Body Parser
 
 app.use(express.json());
+
 
 app.use("/api/v1/bootcamps", bootcamps);
 
